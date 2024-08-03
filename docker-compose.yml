@@ -1,0 +1,29 @@
+services:
+  db:
+    container_name: raynis-test-db
+    image: postgres:alpine
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - raynis-test-db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: 'test'
+      POSTGRES_USER: 'root'
+      POSTGRES_PASSWORD: 'root'
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U root -d test'"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - raynis-test-network
+volumes:
+  raynis-test-db-data:
+    name: raynis-test-db-data
+    driver: local
+
+networks:
+  raynis-test-network:
+    name: raynis-test-network
+    driver: bridge
