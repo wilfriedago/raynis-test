@@ -18,7 +18,9 @@ export class UsersService {
   }
 
   findAll() {
-    return this.repository.find();
+    const users = this.repository.find();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    return users.then((users) => users.map(({ password, ...user }) => user));
   }
 
   async findOne(options: FindOneOptions<User>) {
