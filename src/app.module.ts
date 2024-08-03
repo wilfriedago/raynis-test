@@ -29,7 +29,8 @@ import { join } from 'node:path';
     AuthModule,
     UsersModule,
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'uploads'), // Path to the static files
+      rootPath: join(__dirname, '..', 'uploads'),
+      exclude: ['/api/(.*)'],
     }),
     MulterModule.register({
       preservePath: true,
