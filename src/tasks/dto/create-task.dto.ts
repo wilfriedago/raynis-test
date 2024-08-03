@@ -26,4 +26,12 @@ export class CreateTaskDto {
   })
   @IsBoolean()
   isCompleted: boolean;
+
+  @ApiProperty({
+    description: 'The URL of the file attached to the task',
+    example: 'https://example.com/file.pdf',
+    required: false,
+  })
+  @IsString()
+  fileUrl: string;
 }
