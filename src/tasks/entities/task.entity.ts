@@ -34,6 +34,15 @@ export class Task {
   })
   isCompleted: boolean;
 
+  @Column({
+    type: 'varchar',
+    length: 255,
+    name: 'file_url',
+    comment: 'The URL of the file attached to the task',
+    nullable: true,
+  })
+  fileUrl: string;
+
   @CreateDateColumn()
   createdAt: Date;
 

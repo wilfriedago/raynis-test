@@ -10,7 +10,7 @@ async function bootstrap() {
 
   app.enableShutdownHooks();
   app.enableVersioning({ type: VersioningType.URI });
-  app.setGlobalPrefix('api', { exclude: ['/', 'docs'] });
+  app.setGlobalPrefix('api', { exclude: ['/', '/docs', '/uploads'] });
 
   const config = new DocumentBuilder()
     .setTitle('API Docs')
