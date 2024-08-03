@@ -9,6 +9,9 @@ import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth/auth.guard';
+import { MulterModule } from '@nestjs/platform-express';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'node:path';
 
 @Module({
   imports: [
@@ -25,6 +28,13 @@ import { AuthGuard } from './auth/auth.guard';
     }),
     AuthModule,
     UsersModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploads'), // Path to the static files
+    }),
+    MulterModule.register({
+      preservePath: true,
+      dest: './uploads',
+    }),
   ],
   controllers: [AppController],
   providers: [
