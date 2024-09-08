@@ -1,3 +1,13 @@
+networks:
+  raynis-test-network:
+    name: raynis-test-network
+    driver: bridge
+
+volumes:
+  raynis-test-db-data:
+    name: raynis-test-db-data
+    driver: local
+
 services:
   db:
     container_name: raynis-test-db
@@ -18,12 +28,3 @@ services:
       retries: 5
     networks:
       - raynis-test-network
-volumes:
-  raynis-test-db-data:
-    name: raynis-test-db-data
-    driver: local
-
-networks:
-  raynis-test-network:
-    name: raynis-test-network
-    driver: bridge
